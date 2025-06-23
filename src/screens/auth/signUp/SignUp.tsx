@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {View, Text, TextInput, Button, StyleSheet, TouchableOpacity} from 'react-native';
+import {useState} from 'react';
+import {View, Text, TextInput, Button, TouchableOpacity} from 'react-native';
 import auth from '@react-native-firebase/auth';
 import {useNavigation} from '@react-navigation/native';
 import { styles } from './styles';
@@ -38,7 +38,7 @@ export default function SignUpScreen() {
       />
       {error ? <Text style={styles.error}>{error}</Text> : null}
       <Button title="Зарегистрироваться" onPress={handleRegister} />
-      <TouchableOpacity onPress={() => navigation.goBack()}>
+      <TouchableOpacity onPress={() => navigation.navigate('SignIn' as never)}>
         <Text style={styles.link}>Уже есть аккаунт? Войти</Text>
       </TouchableOpacity>
     </View>

@@ -41,7 +41,7 @@ export default function SignInScreen() {
       />
       {error ? <Text style={styles.error}>{error}</Text> : null}
       <Button title="Войти" onPress={handleLogin} />
-      <TouchableOpacity onPress={() => navigation.navigate('Registration' as never)}>
+      <TouchableOpacity onPress={() => navigation.navigate('SigтUp' as never)}>
         <Text style={styles.link}>Нет аккаунта? Зарегистрироваться</Text>
       </TouchableOpacity>
     </View>
