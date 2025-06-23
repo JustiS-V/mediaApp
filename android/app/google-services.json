@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "948230909695",
+    "project_id": "mediaapptest-e28d9",
+    "storage_bucket": "mediaapptest-e28d9.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:948230909695:android:87426f6819d2f0f54866ca",
+        "android_client_info": {
+          "package_name": "com.mediaapptest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7DFm7kPL75X4M_xLAhZzgAWSVlE8ypu4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
