@@ -10,25 +10,15 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { styles } from './styles';
-import CameraRoll, { PhotoIdentifier, GetPhotosReturnType } from '@react-native-camera-roll/camera-roll';
+import { CameraRoll, PhotoIdentifier, GetPhotosReturnType } from '@react-native-camera-roll/camera-roll';
 
 export default function GalleryScreen() {
-  const navigation = useNavigation();
+
   const [photos, setPhotos] = useState<PhotoIdentifier[]>([]);
   const [after, setAfter] = useState<string | undefined>(undefined);
   const [hasNextPage, setHasNextPage] = useState(true);
   const [loading, setLoading] = useState(false);
-
-  async function hasAndroidPermission() {
-    // ... ваша проверка разрешений без изменений ...
-  }
-
-  async function savePicture() {
-    if (Platform.OS === "android" && !(await hasAndroidPermission())) {
-      return;
-    }
-    // CameraRoll.save(tag, { type, album })
-  }
+  const navigation = useNavigation();
 
   const requestPermission = async () => {
     if (Platform.OS === 'android') {
@@ -59,9 +49,13 @@ export default function GalleryScreen() {
         assetType: 'Photos',
       });
 
-      console.log('Loaded photos: ', res.edges.length);
-
-      setPhotos(prev => [...prev, ...res.edges]);
+      setPhotos(prev => {
+        // Avoid duplicates if after is the same
+        if (after && prev.length && res.edges.length && prev[prev.length - 1].node.image.uri === res.edges[0].node.image.uri) {
+          return prev;
+        }
+        return [...prev, ...res.edges];
+      });
       setAfter(res.pageInfo.endCursor);
       setHasNextPage(res.pageInfo.hasNextPage);
     } catch (error) {
@@ -81,11 +75,18 @@ export default function GalleryScreen() {
       }
     };
     load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSelect = (img: PhotoIdentifier) => {
     console.log('Selected image:', img.node.image.uri);
-    // navigation.navigate('ImageEditor' as never, { image: img.node.image.uri } as never);
+    navigation.navigate('ImageEditor', { image: img.node.image.uri });
+  };
+
+  const handleEndReached = () => {
+    if (!loading && hasNextPage) {
+      fetchPhotos();
+    }
   };
 
   return (
@@ -96,13 +97,48 @@ export default function GalleryScreen() {
         numColumns={3}
         renderItem={({ item }) => (
           <TouchableOpacity onPress={() => handleSelect(item)} style={styles.item}>
-            <Image source={{ uri: item.node.image.uri }} style={styles.image} resizeMode="cover" />
+            <Image
+              source={{ uri: item.node.image.uri }}
+              style={styles.image}
+              resizeMode="cover"
+              // Use cache for better performance
+              cache="force-cache"
+            />
           </TouchableOpacity>
         )}
-        onEndReached={fetchPhotos}
-        onEndReachedThreshold={0.5}
+        onEndReached={handleEndReached}
+        onEndReachedThreshold={0.3}
         ListFooterComponent={loading ? <ActivityIndicator /> : null}
+        initialNumToRender={30}
+        windowSize={15} // Increase window size for smoother scroll
+        removeClippedSubviews
+        maxToRenderPerBatch={15} // Limit batch rendering
+        updateCellsBatchingPeriod={50}
+        getItemLayout={(_, index) => ({
+          length: styles.image.height,
+          offset: styles.image.height * index,
+          index,
+        })}
+        // Avoid unnecessary re-renders
+        extraData={photos.length}
       />
     </View>
   );
 }
+
+// Optionally, you can use a library like 'react-native-fast-image' for better caching.
+// import FastImage from 'react-native-fast-image';
+
+// To use FastImage for better caching, replace Image with FastImage:
+/*
+renderItem={({ item }) => (
+  <TouchableOpacity onPress={() => handleSelect(item)} style={styles.item}>
+    <FastImage
+      source={{ uri: item.node.image.uri, priority: FastImage.priority.normal }}
+      style={styles.image}
+      resizeMode={FastImage.resizeMode.cover}
+    />
+  </TouchableOpacity>
+)}
+*/
+// Otherwise, continue using Image with cache prop (works only on iOS/Expo):

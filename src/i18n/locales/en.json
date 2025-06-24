@@ -1,0 +1,17 @@
+ {
+  "gallery": "Gallery",
+  "crop": "Crop",
+  "square": "Square",
+  "ratio16_9": "16:9",
+  "ratio4_3": "4:3",
+  "permissionDenied": "Permission denied",
+  "error": "Error",
+  "failedToCrop": "Failed to crop image",
+  "loadedPhotos": "Loaded photos: {{count}}",
+  "selectedImage": "Selected image: {{uri}}",
+  "askGalleryPermission": "App needs access to your gallery",
+  "galleryPermissionTitle": "Gallery Permission",
+  "askMeLater": "Ask Me Later",
+  "cancel": "Cancel",
+  "ok": "OK"
+}

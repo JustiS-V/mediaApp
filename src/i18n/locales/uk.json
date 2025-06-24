@@ -1,0 +1,17 @@
+{
+  "gallery": "Галерея",
+  "crop": "Обрізати",
+  "square": "Квадрат",
+  "ratio16_9": "16:9",
+  "ratio4_3": "4:3",
+  "permissionDenied": "Доступ заборонено",
+  "error": "Помилка",
+  "failedToCrop": "Не вдалося обрізати зображення",
+  "loadedPhotos": "Завантажено фото: {{count}}",
+  "selectedImage": "Вибране зображення: {{uri}}",
+  "askGalleryPermission": "Додатку потрібен доступ до вашої галереї",
+  "galleryPermissionTitle": "Доступ до галереї",
+  "askMeLater": "Запитати пізніше",
+  "cancel": "Скасувати",
+  "ok": "ОК"
+}

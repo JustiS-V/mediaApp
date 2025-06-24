@@ -1,0 +1,17 @@
+{
+  "gallery": "Галерея",
+  "crop": "Обрезать",
+  "square": "Квадрат",
+  "ratio16_9": "16:9",
+  "ratio4_3": "4:3",
+  "permissionDenied": "Доступ запрещён",
+  "error": "Ошибка",
+  "failedToCrop": "Не удалось обрезать изображение",
+  "loadedPhotos": "Загружено фото: {{count}}",
+  "selectedImage": "Выбрано изображение: {{uri}}",
+  "askGalleryPermission": "Приложению нужен доступ к вашей галерее",
+  "galleryPermissionTitle": "Доступ к галерее",
+  "askMeLater": "Спросить позже",
+  "cancel": "Отмена",
+  "ok": "ОК"
+}
