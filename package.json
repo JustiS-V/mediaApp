@@ -1,5 +1,5 @@
 {
-  "name": "imperia_avto_mobile",
+  "name": "MediaApp",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -30,9 +30,12 @@
     "react-i18next": "^15.5.2",
     "react-native": "0.76.5",
     "react-native-bootsplash": "^6.3.9",
+    "react-native-color-matrix-image-filters": "^5.2.1",
     "react-native-config": "^1.5.5",
+    "react-native-fs": "^2.20.0",
     "react-native-gesture-handler": "^2.14.0",
     "react-native-keychain": "^10.0.0",
+    "react-native-permissions": "^5.4.1",
     "react-native-reanimated": "^3.8.0",
     "react-native-safe-area-context": "^4.8.2",
     "react-native-screens": "^4.11.1",

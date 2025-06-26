@@ -1,79 +1,234 @@
+# 📱 React Native Mobile Application
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+## 📋 Project Overview
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+A multifunctional React Native mobile application using **TypeScript** and **Redux Toolkit**.
 
-## Step 1: Start the Metro Server
+The project supports:
+- User authentication (Sign In, Sign Up)
+- Multi-language support (English, Russian, Ukrainian)
+- Image gallery viewing
+- Image editing: cropping, applying filters (Grayscale, Invert), saving to device gallery
+- Firebase integration
+- State management via Redux Toolkit
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+The app is fully compatible with **Android** and **iOS**.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+---
+
+## 🚀 Getting Started
+
+> **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions up to the "Creating a new application" step before proceeding.
+
+### Step 1: Install Dependencies
+
+Run the following command in the project root:
 
 ```bash
+# using npm
+npm install
+
+# OR using Yarn
+yarn install
+
+### Step 2: Start the Metro Server
+
 # using npm
 npm start
 
 # OR using Yarn
 yarn start
-```
 
-## Step 2: Start your Application
+# for ios
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+cd ios && pod install && cd ..
 
-### For Android
+### Step 3: Run the Application
 
-```bash
+for android
+
 # using npm
 npm run android
 
 # OR using Yarn
 yarn android
-```
 
-### For iOS
+for ios
 
-```bash
 # using npm
 npm run ios
 
 # OR using Yarn
 yarn ios
-```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+### ✏️ Modifying the App
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+After launching the app:
 
-## Step 3: Modifying your App
+ - Open App.tsx in your editor and make changes.
 
-Now that you have successfully run the app, let's modify it.
+ - For Android: Press <kbd>R</kbd> twice or open the Developer Menu (<kbd>Ctrl</kbd> + <kbd>M</kbd> or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd>) to reload.
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+ - For iOS: Press <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in the simulator to reload.
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+# 📂 Project Structure
 
-## Congratulations! :tada:
+.
+├── android/                      # Android native project
+├── ios/                          # iOS native project
+├── src/                          # Application source code
+│   ├── components/               # Reusable UI components
+│   ├── constants/                # Global constants
+│   ├── i18n/                     # Internationalization setup
+│   │   ├── locales/              # Translation files
+│   │   │   ├── en.json           # English translations
+│   │   │   ├── ru.json           # Russian translations
+│   │   │   └── uk.json           # Ukrainian translations
+│   ├── navigation/               # App navigation (stacks)
+│   │   ├── authStack/            # Authentication screens navigation
+│   │   └── mainStack/            # Main screens navigation
+│   ├── screens/                  # Application screens
+│   │   ├── auth/                 # Authentication screens
+│   │   │   ├── signIn/           # Sign In screen
+│   │   │   ├── signUp/           # Sign Up screen
+│   │   ├── main/                 # Main app screens
+│   │   │   ├── gallery/          # Gallery screen
+│   │   │   ├── ImageEditor/      # Image editor screen
+│   ├── store/                    # Redux Toolkit store setup
+│   ├── types/                    # Global TypeScript types
+│   ├── utils/                    # Utility functions (e.g. token manager)
+├── firebaseConfig.ts             # Firebase configuration
+├── App.tsx                       # Application entry point
+├── package.json                  # Project scripts and dependencies
+├── README.md                     # Project documentation
+└── other config files...
 
-You've successfully run and modified your React Native App. :partying_face:
+### ⚙️ Available Scripts
 
-### Now what?
+npm start	#Start Metro Bundler
+npm run android	#Run the Android app
+npm run ios	#Run the iOS app
+npm run lint	#Run ESLint
+npm test	#Run tests (if configured)
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+### 🛠️ Key Features
 
-# Troubleshooting
+ - 📲 User Authentication (Sign In, Sign Up)
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+ - 🗺️ Stack navigation: Auth flow & Main flow
 
-# Learn More
+ - 🖼️ Image Gallery: Select and view images from device storage
 
-To learn more about React Native, take a look at the following resources:
+ - ✂️ Image Editor:
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+   - Crop functionality
+
+   - Grayscale filter
+
+   - Invert colors filter
+
+   - Save to device gallery
+
+ - 🌐 Multi-language support: English, Russian, Ukrainian
+
+ - 🔒 Token management using Redux Toolkit and local storage
+
+ - 🔥 Firebase integration (authentication and storage)
+
+ ### 🌐 Internationalization (i18n)
+
+Supported languages:
+
+ - 🇺🇸 English (en.json)
+
+ - 🇷🇺 Russian (ru.json)
+
+ - 🇺🇦 Ukrainian (uk.json)
+
+Translations are located in:
+
+src/i18n/locales/
+
+Adding a New Language:
+
+1.  Create a new JSON file in locales/.
+
+2. Add the language to the i18n configuration in src/i18n/index.ts.
+
+### 🔐 Required Permissions
+
+Android
+
+In android/app/src/main/AndroidManifest.xml:
+
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.CAMERA" />
+
+iOS
+
+In ios/{ProjectName}/Info.plist:
+
+<key>NSPhotoLibraryAddUsageDescription</key>
+<string>This app requires access to save images to your gallery.</string>
+
+<key>NSPhotoLibraryUsageDescription</key>
+<string>This app requires access to your photo library to select and edit images.</string>
+
+<key>NSCameraUsageDescription</key>
+<string>This app requires access to your camera to capture photos.</string>
+
+### 🗃️ State Management
+
+Redux Toolkit is used for global state management.
+
+ - authSlice.ts – authentication state (login, tokens)
+
+ - store/index.ts – Redux store setup and configuration
+
+### 🔥 Firebase Configuration
+
+All Firebase settings are stored in firebaseConfig.ts and use environment variables from .env.
+
+You need to create a .env file based on .env.example and provide your Firebase credentials.
+
+✅ TODO: Future Improvements
+
+ - Implement global API error handling
+
+ - Use react-native-permissions for permission management
+
+ - Add drag-resize functionality for cropping
+
+ - Add more image filters (e.g. Sepia, Brightness)
+
+ - Write unit and integration tests
+
+ - Configure EAS Build or Bitrise for automatic CI/CD
+
+### 📚 Learn More
+
+To learn more about React Native:
+
+ - React Native Website
+
+ - Getting Started Guide
+
+ - React Native Basics
+
+ - GitHub Repository
+
+### 🧑‍💻 Contact
+
+ Telegram: @justisvalya
+
+ Email: valentyn.shvedov@gmail.com
+
+### TechStack
+
+ - React Native
+ - TypeScript
+ - Redux Toolkit
+ - Firebase
